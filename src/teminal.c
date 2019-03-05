@@ -33,6 +33,7 @@ int set_fg_color(enum colors color)
 	write(1, str, len);
 	return 0;
 }
+
 int set_bg_color(enum colors color) 
 {
 	if (!isatty(1)) {

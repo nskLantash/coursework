@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include "design.h"
 
-int clrscr(void) ;
+int clrscr(void);
+int goto_XY(int, int);
 
 #endif 

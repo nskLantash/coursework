@@ -8,7 +8,11 @@
 #include <unistd.h>
 #include "design.h"
 
+enum colors {BLACK, RED, GREEN, YELLOW, BLUE, PURPLE, CYAN, WHITE};
+
 int clrscr(void);
 int goto_XY(int, int);
+int set_fg_color(enum colors color);
+int set_bg_color(enum colors color);
 
 #endif 

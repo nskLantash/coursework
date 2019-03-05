@@ -4,6 +4,33 @@
 #include <termios.h> 
 #include "readkey.h"
 
+int read_key(enum  keys *key) 
+{
+	char ch, buf[10] ;
+	int d, i = 0, k ;
+	read(0, buf, 4); 
+	ch = buf[0] ;
+	switch(ch) {
+	case '1': 
+		*key = 1;
+		return 0;
+	case '2': 
+		*key = 2;
+		return 0;
+	case '3': 
+		*key = 3;
+		return 0;
+	case '4': 
+		*key = 4;
+		return 0;
+	case '5': 
+		*key = 5;
+		return 0;
+	case '6': 
+		*key = 6;
+		return 0;
+	}
+}
 int my_term_save()
 {
 	if (!isatty(0)) { 
@@ -29,4 +56,5 @@ int my_term_regime(int regime, int vtime, int vmin, int echo, int sigint)
 		my_term_restore() ;
 	}
 }
+
 

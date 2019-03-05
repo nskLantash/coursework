@@ -14,5 +14,6 @@ int clrscr(void);
 int goto_XY(int, int);
 int set_fg_color(enum colors color);
 int set_bg_color(enum colors color);
+void write_str(char *str, int x, int y, int len, int fl);
 
 #endif 

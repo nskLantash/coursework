@@ -6,9 +6,9 @@
 
 int read_key(enum  keys *key) 
 {
-	char ch, buf[10] ;
+	char ch, buf[2] ;
 	int d, i = 0, k ;
-	read(0, buf, 4); 
+	read(0, buf, 1); 
 	ch = buf[0] ;
 	switch(ch) {
 	case '1': 
@@ -29,6 +29,8 @@ int read_key(enum  keys *key)
 	case '6': 
 		*key = 6;
 		return 0;
+	default:
+		return 1;
 	}
 }
 int my_term_save()
@@ -57,4 +59,18 @@ int my_term_regime(int regime, int vtime, int vmin, int echo, int sigint)
 	}
 }
 
-
+int kbhit() {
+ 	char ch[2];
+ 	int nread;
+ 	//if (peek_character != -1) return 1;
+ 	tty.c_cc[VMIN] = 0;
+ 	tcsetattr(0, TCSANOW, &tty);
+ 	nread = read(0, ch, 1);
+ 	tty.c_cc[VMIN] = 1;
+ 	tcsetattr(0, TCSANOW, &tty);
+ 	if (nread == 1) {
+  		peek_character = ch[0];
+ 		return 1;
+ 	}
+ 	return 0;
+}

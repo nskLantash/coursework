@@ -23,7 +23,8 @@ int main(int argc, char *argv[])
 	draw_screen();
 	
 	while(1) { 
-		read_key(&key);
+		int flag = read_key(&key);
+		if (flag) continue;
 		if (key == SIX) {
 			break;
 		}
@@ -52,7 +53,10 @@ int main(int argc, char *argv[])
 			break;
 		case FIVE:
 			clear_world();
+			WIDTH = 40, HEIGHT = 22;
+			int tmp_cycle = cycles;
 			start_game(WIDTH, HEIGHT, cycles, 2);
+			cycles = tmp_cycle;
 			break;
 		default: 
 			break;

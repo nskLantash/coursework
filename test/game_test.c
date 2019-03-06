@@ -26,3 +26,34 @@ CTEST(suite1, test1) {
 	ASSERT_EQUAL(real, expected);
 }
 
+CTEST(suite2, test2) {
+	int **matrix;
+	matrix = (int**)malloc(4 * sizeof(int*));
+    for (int i = 0; i < 4; i++) {  // цикл по строкам 
+    	// Выделение памяти под хранение строк
+    	matrix[i] = (int*)malloc(4 * sizeof(int));
+	}
+	init_matrix(matrix);
+
+	unsigned int real = count_live_neighbors(matrix, 1, 1, 4, 4);
+	unsigned int expected = 2;
+	ASSERT_EQUAL(real, expected);
+}
+
+CTEST(suite2, test3) {
+	int **matrix, **prev_matrix;
+	matrix = (int**)malloc(4 * sizeof(int*));
+	prev_matrix = (int**)malloc(4 * sizeof(int*));
+    for (int i = 0; i < 4; i++) {  // цикл по строкам 
+    	// Выделение памяти под хранение строк
+    	matrix[i] = (int*)malloc(4 * sizeof(int));
+    	prev_matrix[i] = (int*)malloc(4 * sizeof(int));
+	}
+	init_matrix(matrix);
+	copy_world(matrix, prev_matrix, 4, 4);
+
+	unsigned int real = cmp_world(matrix, prev_matrix, 4, 4);
+	unsigned int expected = 0;
+	ASSERT_EQUAL(real, expected);
+}
+

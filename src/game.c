@@ -150,7 +150,7 @@ int cmp_world(int **w1, int **w2, int WIDTH, int HEIGHT)
  */
 void start_game(int WIDTH, int HEIGHT, int cycles, int mode)
 {
-	int i, slp = 1000;
+	int i, slp = 500;
     int **world, **prev_world;
     
     // Выделение памяти под указатели на строки
@@ -166,8 +166,8 @@ void start_game(int WIDTH, int HEIGHT, int cycles, int mode)
     	init_world(world, WIDTH, HEIGHT);
     } 
     if (mode == 2) {
-    	WIDTH = 40, HEIGHT = 22, cycles = 300, slp = 250;
-    	glider(world);
+    	slp = 250, cycles = 300;
+    	glider(world, WIDTH, HEIGHT);
     }
 
     unsigned int live_points = -1;
@@ -175,6 +175,16 @@ void start_game(int WIDTH, int HEIGHT, int cycles, int mode)
     int count = 0;
 
     do {
+    	if (kbhit()) {
+        	char ch;
+        	if (peek_character != -1) {
+				ch = peek_character;
+				peek_character = -1;
+			}
+        	//if (ch == 'q') {
+        		count = cycles;
+        	//}
+        }
         draw_world(world, WIDTH, HEIGHT);   // вывод из design.h
         //printf(ESC "[%d;%dH%s", 15, 15, "@");	// временно
         copy_world(world, prev_world, WIDTH, HEIGHT);
@@ -202,8 +212,13 @@ void start_game(int WIDTH, int HEIGHT, int cycles, int mode)
     free(world);
   	free(prev_world);
 }
-void glider(int **world)
+void glider(int **world, int WIDTH, int HEIGHT)
 {
+	for (int i = 0; i < HEIGHT; i++) {
+		for (int j = 0; j < WIDTH; j++) {
+			world[i][j] = 0;
+		}
+	}
 	world[5][1] = 1; world[6][1] = 1; world[5][2] = 1; world[6][2] = 1;
 	world[5][11] = 1; world[6][11] = 1; world[7][11] = 1;
 	world[4][12] = 1; world[8][12] = 1;

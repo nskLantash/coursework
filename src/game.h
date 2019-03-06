@@ -5,12 +5,12 @@
 #include <stdio.h>
 #include <time.h>
 #include "design.h"
-
+#include "readkey.h"
 #include <unistd.h>
 #define msleep(x) usleep(x * 1000)
 
 void init_world(int **world, int WIDTH, int HEIGHT);
-void glider(int **world);
+void glider(int **world, int WIDTH, int HEIGHT);
 unsigned int get_live_count(int **world, int WIDTH, int HEIGHT);
 void read_point_neighbors(signed int nb[][2], unsigned int x, unsigned int y);
 unsigned int count_live_neighbors(int **world, unsigned int x, 

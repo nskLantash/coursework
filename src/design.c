@@ -58,9 +58,9 @@ void draw_screen()
 	goto_XY(9, 3);
 	write(1, "3 - Enter the ammount of cycles", 31);
 	goto_XY(11, 3);
-	write(1, "4 - Start game with random world", 14);
+	write(1, "4 - Start game (random world)", 29);
 	goto_XY(13, 3);
-	write(1, "5 - Start game with Gosper gun", 8);
+	write(1, "5 - Start game with Gosper gun", 30);
 	goto_XY(15, 3);
 	write(1, "6 - Exit", 8);
 }

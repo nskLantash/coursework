@@ -213,9 +213,10 @@ void start_game(int WIDTH, int HEIGHT, int cycles, int mode)
   	free(prev_world);
 }
 void glider(int **world, int WIDTH, int HEIGHT)
-{
-	for (int i = 0; i < HEIGHT; i++) {
-		for (int j = 0; j < WIDTH; j++) {
+{	
+	int i, j;
+	for (i = 0; i < HEIGHT; i++) {
+		for (j = 0; j < WIDTH; j++) {
 			world[i][j] = 0;
 		}
 	}

@@ -14,8 +14,9 @@ void init_matrix(int **world)
 
 CTEST(suite1, test1) {
 	int **matrix;
+	int i;
 	matrix = (int**)malloc(4 * sizeof(int*));
-    for (int i = 0; i < 4; i++) {  // цикл по строкам 
+    for (i = 0; i < 4; i++) {  // цикл по строкам 
     	// Выделение памяти под хранение строк
     	matrix[i] = (int*)malloc(4 * sizeof(int));
 	}
@@ -28,8 +29,9 @@ CTEST(suite1, test1) {
 
 CTEST(suite2, test2) {
 	int **matrix;
+	int i;
 	matrix = (int**)malloc(4 * sizeof(int*));
-    for (int i = 0; i < 4; i++) {  // цикл по строкам 
+    for (i = 0; i < 4; i++) {  // цикл по строкам 
     	// Выделение памяти под хранение строк
     	matrix[i] = (int*)malloc(4 * sizeof(int));
 	}
@@ -41,10 +43,11 @@ CTEST(suite2, test2) {
 }
 
 CTEST(suite2, test3) {
+	int i;
 	int **matrix, **prev_matrix;
 	matrix = (int**)malloc(4 * sizeof(int*));
 	prev_matrix = (int**)malloc(4 * sizeof(int*));
-    for (int i = 0; i < 4; i++) {  // цикл по строкам 
+    for (i = 0; i < 4; i++) {  // цикл по строкам 
     	// Выделение памяти под хранение строк
     	matrix[i] = (int*)malloc(4 * sizeof(int));
     	prev_matrix[i] = (int*)malloc(4 * sizeof(int));
